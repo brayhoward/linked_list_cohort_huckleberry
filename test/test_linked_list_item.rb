@@ -19,6 +19,11 @@ class LinkedListItemTest < MiniTest::Unit::TestCase
     assert_equal("foo", lli.payload)
   end
 
+  def test_01b_item_stores_payload
+    lli = LinkedListItem.new("bar")
+    assert_equal("bar", lli.payload)
+  end
+
   def test_02a_add_next_item
     lli1 = LinkedListItem.new("foo")
     lli2 = LinkedListItem.new("bar")
@@ -75,4 +80,32 @@ class LinkedListItemTest < MiniTest::Unit::TestCase
     assert lli1 < lli2
     assert lli2 > lli1
   end
+
+  def test_04f_comparator_symbol
+    lli1 = LinkedListItem.new(:bar)
+    lli2 = LinkedListItem.new("bar")
+    assert lli1 > lli2
+    assert lli2 < lli1
+  end
+
+  def test_04g_comparator_integer_string
+    lli1 = LinkedListItem.new(1)
+    lli2 = LinkedListItem.new("1")
+    assert lli1 < lli2
+    assert lli2 > lli1
+  end
+
+  def test_04h_comparator_lesser_than
+    lli1 = LinkedListItem.new(:foo)
+    lli2 = LinkedListItem.new(:bar)
+    assert lli2 < lli1
+  end
+
+  def test_04i_comparator_integer_string
+    lli1 = LinkedListItem.new(1)
+    lli2 = LinkedListItem.new(2)
+    assert lli1 < lli2
+    assert lli2 > lli1
+  end
+
 end
