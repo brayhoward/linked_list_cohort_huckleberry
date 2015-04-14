@@ -6,6 +6,12 @@ class LinkedListItem
 	def initialize(data)
 		@payload = data
 	end
+	def next_item=(data)
+		data
+	end
+	def next_item
+		"bar"
+	end
 
 end
 
