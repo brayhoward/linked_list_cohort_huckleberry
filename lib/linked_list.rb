@@ -1,12 +1,14 @@
 class LinkedList
 	attr_reader :first_item
-	attr_reader :last
+	attr_reader :nextItem
 	attr_reader :size
 	def push(arg)
 		if @first_item.nil?
-			@first_item = arg
+			first = LinkedListItem.new(arg)
+			@first_item = first
 		else
-			@last = arg
+			nextOne = LinkedListItem.new(arg)
+			@nextItem = nextOne
 		end
 
 		if @size.nil?
@@ -18,9 +20,9 @@ class LinkedList
 
 	def get(arg)
 		if arg.zero?
-			@first_item
+			@first_item.payload
 		elsif arg > 0
-			@last
+			@nextItem.payload
 		end
 	end
 end
