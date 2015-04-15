@@ -1,19 +1,26 @@
 class LinkedList
 	attr_reader :first_item
-	attr_reader :next
+	attr_reader :last
+	attr_reader :size
 	def push(arg)
 		if @first_item.nil?
-		 @first_item = arg
+			@first_item = arg
 		else
-			@next = arg
+			@last = arg
+		end
+
+		if @size.nil?
+			@size = 0
+		else
+			@size.next
 		end
 	end
 
 	def get(arg)
-		if arg == 0
+		if arg.zero?
 			@first_item
 		elsif arg > 0
-			@next
+			@last
 		end
 	end
 end
