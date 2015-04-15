@@ -16,5 +16,23 @@ class LinkedListItem
 	def last?
 		next_item.nil?
 	end
+
+	def <=>(lli)
+		if self.payload.class == lli.payload.class
+			self.payload <=> lli.payload
+		else
+			if self.payload.is_a? Symbol
+				1
+			elsif self.payload.is_a? Fixnum
+				-1
+			else
+				-1 * (lli <=> self)
+			end
+		end
+	end
+
+	def ===(lli)
+		 self.equal? lli
+	end
 end
 
