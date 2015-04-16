@@ -14,3 +14,8 @@ task :test do
   ENV['EARLY_ESCAPE'] = 'true'
   ruby 'test/guided_tests.rb'
 end
+
+task :ll do
+  ENV['ONLY_LL'] = 'true'
+  ruby 'test/guided_tests.rb'
+end

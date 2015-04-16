@@ -1,28 +1,47 @@
+require_relative 'linked_list_item'
+
 class LinkedList
 	attr_reader :first_item
-	attr_reader :nextItem
 	attr_reader :size
-	def push(arg)
+
+
+
+	def initialize
+		@size = 0
+
+	end
+
+	def push(item)
 		if @first_item.nil?
-			first = LinkedListItem.new(arg)
-			@first_item = first
+			@first_item = LinkedListItem.new(item)
+			@last_item = @first_item
 		else
-			nextOne = LinkedListItem.new(arg)
-			@nextItem = nextOne
+			@last_item.next_item = LinkedListItem.new(item)
+			@last_item = @last_item.next_item
+		end
+		@size += 1
+	end
+
+	def get(index)
+		if (index > @size) || (index < 0)
+			raise IndexError.new ("#{index} is a inavalid index!")
 		end
 
-		if @size.nil?
-			@size = 0
+		if index.zero?
+			@first_item.payload
 		else
-			@size.next
+			i = 0
+			current_node = @first_item
+			while i < index
+				current_node = current_node.next_item
+				i += 1
+			end
+			current_node.payload
 		end
 	end
 
-	def get(arg)
-		if arg.zero?
-			@first_item.payload
-		elsif arg > 0
-			@nextItem.payload
-		end
+	def last
+		@last_item_index = (@size -1)
+		@last = get(@last_item_index)
 	end
 end
