@@ -77,6 +77,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
 
   def test_08a_last_item_for_an_empty_list
     ll = LinkedList.new
+    ll.console_log
     assert_equal(nil, ll.last)
   end
 

@@ -44,4 +44,43 @@ class LinkedList
 		@last_item_index = (@size -1)
 		@last = get(@last_item_index)
 	end
+
+	def console_log
+		index = 0
+		list_items = []
+		while index < @size do
+			item = get(index)
+			list_items << item.to_s.inspect
+			index += 1
+		end
+
+		if @size.zero?
+			print "* -> nil"
+		else
+			print "* -> #{list_items.join(" -> ")} -> nil"
+		end
+	end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
