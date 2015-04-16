@@ -8,7 +8,6 @@ class LinkedList
 
 	def initialize
 		@size = 0
-
 	end
 
 	def push(item)
@@ -41,8 +40,12 @@ class LinkedList
 	end
 
 	def last
-		@last_item_index = (@size -1)
-		@last = get(@last_item_index)
+		if @size.zero?
+			@last = nil
+		else
+			@last_item_index = (@size -1)
+			@last = get(@last_item_index)
+		end
 	end
 
 	def console_log
@@ -59,6 +62,22 @@ class LinkedList
 		else
 			print "* -> #{list_items.join(" -> ")} -> nil"
 		end
+	end
+
+	def to_s
+		if size.zero?
+			return "| |"
+		else
+			index = 0
+			list_items = []
+			while index < @size do
+				item = get(index)
+				list_items << item.to_s.inspect
+				index += 1
+			end
+		end
+
+		"#{list_items.join}"
 	end
 
 end
