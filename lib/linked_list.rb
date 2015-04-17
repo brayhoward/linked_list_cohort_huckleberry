@@ -6,16 +6,13 @@ class LinkedList
 
 
 
-	def initialize(*new_li)
+	def initialize
 		@size = 0
-		@string = "| "
-		if new_li
-			push(new_li)
-		end
+		# @string = "| "
 	end
 
 	def push(item)
-		@string << item + ", "
+		# @string << item + ", "
 		if @first_item.nil?
 			@first_item = LinkedListItem.new(item)
 			@last_item = @first_item
@@ -27,7 +24,7 @@ class LinkedList
 	end
 
 	def get(index)
-		if (index > @size) || (index < 0)
+		if (index > @size) or (index < 0)
 			raise IndexError.new ("#{index} is a inavalid index!")
 		end
 
@@ -45,11 +42,8 @@ class LinkedList
 	end
 
 	def last
-		if @size.zero?
-			@last = nil
-		else
-			@last_item_index = (@size -1)
-			@last = get(@last_item_index)
+		unless @last_item.nil?
+				@last_item.payload
 		end
 	end
 
@@ -69,7 +63,15 @@ class LinkedList
 		if size.zero?
 			"| |"
 		else
-			 @string.chop.chop + " |"
+			current_item = @first_item
+			string = current_item.payload
+			this_many = @size -1
+
+			this_many.times do
+				current_item = current_item.next_item
+				string << ", #{current_item.payload}"
+			end
+			"| #{string} |"
 		end
 	end
 

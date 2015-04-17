@@ -56,6 +56,9 @@ class LinkedListTest < MiniTest::Unit::TestCase
     end
   end
 
+  # def test_06d_get_that_doesnt_exist
+  # end
+
   def test_07a_new_list_size_is_0
     assert_equal(0, LinkedList.new.size)
   end
@@ -77,7 +80,6 @@ class LinkedListTest < MiniTest::Unit::TestCase
 
   def test_08a_last_item_for_an_empty_list
     ll = LinkedList.new
-    ll.console_log
     assert_equal(nil, ll.last)
   end
 
