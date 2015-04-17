@@ -13,22 +13,10 @@ payloads.each { |x| ll.push(x) }
 
 # Then, print it out
 
-ll_size = ll.size
-#puts "link list size is #{ll_size}"
+print "* -> "
 
-index = 0
-list_items = []
-
-while index < ll.size do
-	item = ll.get(index)
-	list_items << item.to_s.inspect
-	index += 1
+ll.size.times do |i|
+	print "#{ll.get(i).inspect} ->"
 end
 
-if ll.size.zero?
-	print "* -> nil"
-else
-	print "* -> #{list_items.join(" -> ")} -> nil"
-end
-
-
+print "nil"

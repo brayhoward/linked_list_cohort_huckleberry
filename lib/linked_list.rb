@@ -6,11 +6,16 @@ class LinkedList
 
 
 
-	def initialize
+	def initialize(*new_li)
 		@size = 0
+		@string = "| "
+		if new_li
+			push(new_li)
+		end
 	end
 
 	def push(item)
+		@string << item + ", "
 		if @first_item.nil?
 			@first_item = LinkedListItem.new(item)
 			@last_item = @first_item
@@ -49,35 +54,23 @@ class LinkedList
 	end
 
 	def console_log
-		index = 0
-		list_items = []
-		while index < @size do
-			item = get(index)
-			list_items << item.to_s.inspect
-			index += 1
+		print "* -> "
+
+		@size.times do |i|
+			print "#{get(i).inspect} ->"
 		end
 
-		if @size.zero?
-			print "* -> nil"
-		else
-			print "* -> #{list_items.join(" -> ")} -> nil"
-		end
+		print "nil"
 	end
+
+
 
 	def to_s
 		if size.zero?
-			return "| |"
+			"| |"
 		else
-			index = 0
-			list_items = []
-			while index < @size do
-				item = get(index)
-				list_items << item.to_s.inspect
-				index += 1
-			end
+			 @string.chop.chop + " |"
 		end
-
-		"#{list_items.join}"
 	end
 
 end
