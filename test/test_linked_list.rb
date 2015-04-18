@@ -99,7 +99,6 @@ class LinkedListTest < MiniTest::Unit::TestCase
   def test_09b_to_s_a_single_item_list
     ll = LinkedList.new
     ll.push("foo")
-    ll.console_log
     assert_equal('| foo |', ll.to_s)
   end
 
@@ -110,7 +109,6 @@ class LinkedListTest < MiniTest::Unit::TestCase
     ll.push("grille")
     assert_equal '| foo, bar, grille |', ll.to_s
   end
-
   # ========= Bonus ========== #
 
   def test_10a_initialize_takes_seed_argument
@@ -204,6 +202,9 @@ class LinkedListTest < MiniTest::Unit::TestCase
     ll = LinkedList.new
     assert_raises IndexError do
       ll.delete(1)
+    end
+    assert_raises IndexError do
+      ll.delete(-1)
     end
   end
 

@@ -5,13 +5,13 @@ class LinkedList
 	attr_reader :size
 
 
-
 	def initialize(*new_li)
 		@size = 0
 		unless new_li.empty?
 			new_li.each {|li| push(li)}
 		end
 	end
+
 
 	def push(item)
 		if @first_item.nil?
@@ -23,6 +23,7 @@ class LinkedList
 		end
 		@size += 1
 	end
+
 
 	def get(index)
 		if (index > @size) or (index < 0)
@@ -42,11 +43,13 @@ class LinkedList
 		end
 	end
 
+
 	def last
 		unless @last_item.nil?
 				@last_item.payload
 		end
 	end
+
 
 	def console_log
 		print "* -> "
@@ -75,6 +78,66 @@ class LinkedList
 			"| #{string} |"
 		end
 	end
+
+	def [](index)
+		get(index)
+	end
+
+
+	def []=(index, li)
+		new_li = LinkedListItem.new(li)
+
+		### get list item at index +1 and set it to be new_li's next_item
+		this_number_of = index +1
+		current_item = @first_item
+
+		this_number_of.times do
+			current_item =current_item.next_item
+		end
+		new_li.next_item=(current_item)
+
+		### edit node at index -1 to have its next_item as the new_li
+		this_many = index -1
+		current_item = @first_item
+
+		this_many.times do
+			current_item = current_item.next_item
+		end
+		current_item.next_item=(new_li)
+
+		number = index +1
+	end
+
+
+	def delete(index)
+		if index > @size or index < 0
+			raise IndexError.new ("index #{index} dosnt exist")
+		end
+
+		if index.zero?
+			@first_item = first_item.next_item
+		else
+
+			this_many = index +1
+			this_number_of = index -1
+			num2_item = @first_item
+			num1_item = @first_item
+
+			this_number_of.times do
+				num1_item = num1_item.next_item
+			end
+
+			this_many.times do
+				num2_item = num2_item.next_item
+			end
+			num1_item.next_item=(num2_item)
+		end
+
+
+
+		@size -= 1
+	end
+
 
 end
 
