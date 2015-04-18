@@ -99,6 +99,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
   def test_09b_to_s_a_single_item_list
     ll = LinkedList.new
     ll.push("foo")
+    ll.console_log
     assert_equal('| foo |', ll.to_s)
   end
 

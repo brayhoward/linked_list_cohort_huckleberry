@@ -6,13 +6,14 @@ class LinkedList
 
 
 
-	def initialize
+	def initialize(*new_li)
 		@size = 0
-		# @string = "| "
+		unless new_li.empty?
+			new_li.each {|li| push(li)}
+		end
 	end
 
 	def push(item)
-		# @string << item + ", "
 		if @first_item.nil?
 			@first_item = LinkedListItem.new(item)
 			@last_item = @first_item
