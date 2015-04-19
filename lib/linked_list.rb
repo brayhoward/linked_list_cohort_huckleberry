@@ -150,7 +150,11 @@ class LinkedList
 			payload = current_item.payload
 			i += 1
 		end
-		i
+		if i > 0 && i == @size  && payload != input
+			nil
+		else
+			i
+		end
 	end
 
 end
