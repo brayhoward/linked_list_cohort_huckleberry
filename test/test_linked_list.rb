@@ -242,6 +242,7 @@ class LinkedListTest < MiniTest::Unit::TestCase
     assert_equal(nil, ll.index("terrible"))
   end
 
+#### whats up with this test??
   def test_14e_index_of_last_item
     ll = LinkedList.new()
     assert_equal(nil, ll.index("terrible"))

@@ -133,30 +133,27 @@ class LinkedList
 			num1_item.next_item=(num2_item)
 		end
 
-
-
 		@size -= 1
 	end
 
 
+	def index(input)
+		payload = @first_item.payload
+		current_item = @first_item
+		# this_many = @size
+		i = 0
+		if payload == input
+			i
+		end
+		while !(payload == input) and i < @size -1
+			current_item = current_item.next_item
+			payload = current_item.payload
+			i += 1
+		end
+		i
+	end
+
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
