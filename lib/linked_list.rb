@@ -7,8 +7,8 @@ class LinkedList
 
 	def initialize(*new_li)
 		@size = 0
-		unless new_li.empty?
-			new_li.each {|li| push(li)}
+		unless new_li.empty? ##### get rid of this unless
+			new_li.each {|payload| push(payload)}
 		end
 	end
 
@@ -25,13 +25,13 @@ class LinkedList
 	end
 
 
-	def get(index)
+	def get_item(index)
 		if (index > @size) or (index < 0)
 			raise IndexError, ("#{index} is a inavalid index!")
 		end
 
 		if index.zero?
-			@first_item.payload
+			@first_item
 		else
 			i = 0
 			current_node = @first_item
@@ -39,14 +39,18 @@ class LinkedList
 				current_node = current_node.next_item
 				i += 1
 			end
-			current_node.payload
+			current_node
 		end
+	end
+
+	def get(index)
+		get_item(index).payload
 	end
 
 
 	def last
 		unless @last_item.nil?
-				@last_item.payload
+			@last_item.payload
 		end
 	end
 
@@ -79,10 +83,7 @@ class LinkedList
 		end
 	end
 
-	def [](index)
-		get(index)
-	end
-
+	alias [] get 
 
 	def []=(index, li)
 		new_li = LinkedListItem.new(li)
@@ -143,7 +144,7 @@ class LinkedList
 
 		unless @size == 0
 			payload = @first_item.payload
-			until payload === input or i == @size -1 do
+			until payload == input or i == @size -1 do
 				current_item = current_item.next_item
 				payload = current_item.payload
 				i += 1
