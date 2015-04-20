@@ -138,14 +138,16 @@ class LinkedList
 
 
 	def index(input)
-		payload = @first_item.payload
 		current_item = @first_item
 		i = 0
 
-		until payload === input or i == @size -1 do
-			current_item = current_item.next_item
-			payload = current_item.payload
-			i += 1
+		unless @size == 0
+			payload = @first_item.payload
+			until payload === input or i == @size -1 do
+				current_item = current_item.next_item
+				payload = current_item.payload
+				i += 1
+			end
 		end
 
 		unless input === payload
