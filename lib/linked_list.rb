@@ -27,7 +27,7 @@ class LinkedList
 
 	def get(index)
 		if (index > @size) or (index < 0)
-			raise IndexError.new ("#{index} is a inavalid index!")
+			raise IndexError, ("#{index} is a inavalid index!")
 		end
 
 		if index.zero?
@@ -110,7 +110,7 @@ class LinkedList
 
 
 	def delete(index)
-		if index > @size or index < 0
+		unless (0..@size).include?(index)
 			raise IndexError.new ("index #{index} dosnt exist")
 		end
 
