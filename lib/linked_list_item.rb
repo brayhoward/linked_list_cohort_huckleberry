@@ -4,6 +4,10 @@ class LinkedListItem
 	attr_reader :payload
 	attr_reader :next_item
 
+	def payload=(arg)
+		@payload = arg
+	end
+
 	def initialize(data)
 		@payload = data
 	end

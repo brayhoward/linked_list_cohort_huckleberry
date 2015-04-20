@@ -83,30 +83,11 @@ class LinkedList
 		end
 	end
 
-	alias [] get 
+	alias [] get
 
-	def []=(index, li)
-		new_li = LinkedListItem.new(li)
-
-		### get list item at index +1 and set it to be new_li's next_item
-		this_number_of = index +1
-		current_item = @first_item
-
-		this_number_of.times do
-			current_item =current_item.next_item
-		end
-		new_li.next_item=(current_item)
-
-		### edit node at index -1 to have its next_item as the new_li
-		this_many = index -1
-		current_item = @first_item
-
-		this_many.times do
-			current_item = current_item.next_item
-		end
-		current_item.next_item=(new_li)
-
-		number = index +1
+	def []=(index, payload)
+		list_item = get_item(index)
+		list_item.payload = payload
 	end
 
 
