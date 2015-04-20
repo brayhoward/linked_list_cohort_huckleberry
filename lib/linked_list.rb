@@ -140,17 +140,15 @@ class LinkedList
 	def index(input)
 		payload = @first_item.payload
 		current_item = @first_item
-		# this_many = @size
 		i = 0
-		if payload == input
-			i
-		end
-		while !(payload == input) and i < @size -1
+
+		until payload === input or i == @size -1 do
 			current_item = current_item.next_item
 			payload = current_item.payload
 			i += 1
 		end
-		if i > 0 && i == @size  && payload != input
+
+		unless input === payload
 			nil
 		else
 			i
