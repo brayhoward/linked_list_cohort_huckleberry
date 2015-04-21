@@ -100,19 +100,16 @@ class LinkedList
 			@first_item = first_item.next_item
 		else
 
-			this_many = index +1
-			this_number_of = index -1
-			num2_item = @first_item
-			num1_item = @first_item
-
-			this_number_of.times do
-				num1_item = num1_item.next_item
+			before_node = @first_item
+			(index -1).times do
+			before_node = before_node.next_item
 			end
 
-			this_many.times do
-				num2_item = num2_item.next_item
+			after_node = @first_item
+			(index +1).times do
+				after_node = after_node.next_item
 			end
-			num1_item.next_item=(num2_item)
+			before_node.next_item=(after_node)
 		end
 
 		@size -= 1
