@@ -28,8 +28,9 @@ class LinkedList
 
 
 	def get_item(index)
-		if (index > @size) or (index < 0)
-			raise IndexError, ("#{index} is a inavalid index!")
+
+		unless (0..@size).include?(index)
+			raise IndexError, ("Index #{index} is inavalid.")
 		end
 
 		if index.zero?
@@ -37,7 +38,7 @@ class LinkedList
 		else
 			i = 0
 			current_node = @first_item
-			while i < index
+			until i == index
 				current_node = current_node.next_item
 				i += 1
 			end
