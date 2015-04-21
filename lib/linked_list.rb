@@ -76,9 +76,8 @@ class LinkedList
 		else
 			current_item = @first_item
 			string = current_item.payload
-			this_many = @size -1
 
-			this_many.times do
+			(@size -1).times do
 				current_item = current_item.next_item
 				string << ", #{current_item.payload}"
 			end
