@@ -99,17 +99,9 @@ class LinkedList
 		if index.zero?
 			@first_item = first_item.next_item
 		else
-
-			before_node = @first_item
-			(index -1).times do
-			before_node = before_node.next_item
-			end
-
-			after_node = @first_item
-			(index +1).times do
-				after_node = after_node.next_item
-			end
-			before_node.next_item=(after_node)
+			# get nodes before and after index and link them together
+			# which effectively deletes the item at the given index
+			get_item(index -1).next_item=(get_item(index +1))
 		end
 
 		@size -= 1
