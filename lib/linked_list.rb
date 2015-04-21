@@ -7,21 +7,23 @@ class LinkedList
 
 	def initialize(*new_li)
 		@size = 0
-		unless new_li.empty? ##### get rid of this unless
-			new_li.each {|payload| push(payload)}
-		end
+		new_li.each {|payload| push(payload)}
 	end
 
 
 	def push(item)
+		new_item = LinkedListItem.new(item)
+
 		if @first_item.nil?
-			@first_item = LinkedListItem.new(item)
+
+			@first_item = new_item
 			@last_item = @first_item
 		else
-			@last_item.next_item = LinkedListItem.new(item)
+			@last_item.next_item = new_item
 			@last_item = @last_item.next_item
 		end
 		@size += 1
+
 	end
 
 
@@ -110,21 +112,21 @@ class LinkedList
 
 	def index(input)
 		current_item = @first_item
-		i = 0
+		index = 0
 
 		unless @size == 0
 			payload = @first_item.payload
-			until payload == input or i == @size -1 do
+			until payload == input or index == @size -1 do
 				current_item = current_item.next_item
 				payload = current_item.payload
-				i += 1
+				index += 1
 			end
 		end
 
 		unless input === payload
 			nil
 		else
-			i
+			index
 		end
 	end
 
