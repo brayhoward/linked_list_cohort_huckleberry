@@ -120,22 +120,20 @@ class LinkedList
 
 	def sorted?
 		if @first_item.nil? or @first_item.next_item.nil?
-			true
+			is_sorted = true
 		else
 			i = 0
-			while !(i = @size - 1)
+			until i = (@size -1) do
 				node      = get_item(i)
 				next_node = get_item(i+1)
 				if (node<=>(next_node)) == 1
-					return false
-				elsif (node<=>(next_node)) == 0 or (node<=>(next_node)) == -1
-					i += 1
+					is_sorted = false
 				else
-					i += 1
+					is_sorted = true
 				end
 			end
-			true
 		end
+		is_sorted
 	end
 
 	def sort!
