@@ -119,14 +119,24 @@ class LinkedList
 	end
 
 	def sorted?
-		if @first_item.nil?
-			true
-		elsif @first_item.next_item.nil?
+		if @first_item.nil? or @first_item.next_item.nil?
 			true
 		elsif (@first_item<=>(@first_item.next_item)) == 1
 			false
 		else
 			true
+		end
+	end
+
+	def sort!
+		if @first_item.nil? or @first_item.next_item.nil?
+			return
+		end
+		current_item = @first_item
+		next_item = @first_item.next_item
+		if (current_item<=>(next_item)) == 1
+			@first_item = next_item
+			@first_item.next_item = current_item
 		end
 	end
 
