@@ -18,16 +18,16 @@ class LinkedListItem
 		next_item.nil?
 	end
 
-	def <=>(lli)
-		if self.payload.class == lli.payload.class
-			self.payload <=> lli.payload
+	def <=>(other)
+		if self.payload.class == other.payload.class
+			self.payload <=> other.payload
 		else
 			if self.payload.is_a? Symbol
 				1
 			elsif self.payload.is_a? Fixnum
 				-1
 			else
-				-1 * (lli <=> self)
+				-1 * (other <=> self)
 			end
 		end
 	end

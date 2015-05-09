@@ -58,18 +58,6 @@ class LinkedList
 	end
 
 
-	def console_log
-		print "* -> "
-
-		@size.times do |i|
-			print "#{get(i).inspect} ->"
-		end
-
-		print "nil"
-	end
-
-
-
 	def to_s
 		if size.zero?
 			"| |"
@@ -127,6 +115,18 @@ class LinkedList
 			nil
 		else
 			index
+		end
+	end
+
+	def sorted?
+		if @first_item.nil?
+			true
+		elsif @first_item.next_item.nil?
+			true
+		elsif (@first_item<=>(@first_item.next_item)) == 1
+			false
+		else
+			true
 		end
 	end
 
