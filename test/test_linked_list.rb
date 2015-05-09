@@ -296,6 +296,11 @@ class LinkedListTest < MiniTest::Unit::TestCase
     assert ll.sorted?
   end
 
+  def test_15h_unsorted_list_where_begining_is_ordered
+    ll = LinkedList.new( 1, 2, 3, 4, "bar", "foo", :b, 8)
+    assert !ll.sorted?
+  end
+
   #=== Useful , if you're going to implement bubble sort: ===#
   # Remove the 17x tests if you're going to try for a different sort algorithm.
 

@@ -121,9 +121,19 @@ class LinkedList
 	def sorted?
 		if @first_item.nil? or @first_item.next_item.nil?
 			true
-		elsif (@first_item<=>(@first_item.next_item)) == 1
-			false
 		else
+			i = 0
+			while !(i = @size - 1)
+				node      = get_item(i)
+				next_node = get_item(i+1)
+				if (node<=>(next_node)) == 1
+					return false
+				elsif (node<=>(next_node)) == 0 or (node<=>(next_node)) == -1
+					i += 1
+				else
+					i += 1
+				end
+			end
 			true
 		end
 	end
@@ -132,12 +142,28 @@ class LinkedList
 		if @first_item.nil? or @first_item.next_item.nil?
 			return
 		end
-		current_item = @first_item
-		next_item = @first_item.next_item
-		if (current_item<=>(next_item)) == 1
-			@first_item = next_item
+
+		current_item = get_item(0)
+		second_item  = get_item(1)
+		if (current_item<=>(second_item)) == 1
+			@first_item = second_item
 			@first_item.next_item = current_item
 		end
+
+		while !self.sorted?
+			if @size > 2
+				current_item = get_item(1)
+				second_item  = get_item(2)
+
+				if (current_item<=>(next_item)) == 1
+
+					@first_item.next_item  = second_item
+					current_item.next_item = second_item.next_item
+					second_item.next_item  = current_item
+				end
+			end
+		end
+
 	end
 
 end
