@@ -3,7 +3,9 @@ GEM
   specs:
     ansi (1.5.0)
     builder (3.2.2)
+    coderay (1.1.0)
     hashie (3.4.1)
+    method_source (0.8.2)
     minitest (4.7.3)
     minitest-reporters (0.14.24)
       ansi
@@ -13,6 +15,11 @@ GEM
     powerbar (1.0.12)
       ansi (~> 1.5.0)
       hashie (>= 1.1.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    slop (3.6.0)
 
 PLATFORMS
   ruby
@@ -20,3 +27,4 @@ PLATFORMS
 DEPENDENCIES
   minitest (= 4.7.3)
   minitest-reporters
+  pry
