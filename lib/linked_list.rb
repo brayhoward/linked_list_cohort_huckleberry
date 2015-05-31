@@ -17,7 +17,7 @@ class LinkedList
     if @first_item.nil?
 
       @first_item = new_item
-      @last_item = @first_item
+      @last_item = first_item
     else
       @last_item.next_item = new_item
       @last_item = @last_item.next_item
@@ -119,26 +119,21 @@ class LinkedList
   end
 
   def sorted?
-    if @first_item.nil? or @first_item.next_item.nil?
-      is_sorted = true
-    else
-      i = 0
-      until i = (@size -1) do
-        node      = get_item(i)
-        next_node = get_item(i+1)
-        if (node<=>(next_node)) == 1
-          is_sorted = false
-        else
-          is_sorted = true
-        end
-      end
+    node = first_item
+    if node.nil? || node.next_item.nil?
+      return true
     end
-    is_sorted
+    (size - 1).times do
+      if node > node.next_item
+        return false
+      end
+      node = node.next_item
+    end
   end
 
   def sort!
     if @first_item.nil? or @first_item.next_item.nil?
-      return
+      return true
     end
 
     current_item = get_item(0)

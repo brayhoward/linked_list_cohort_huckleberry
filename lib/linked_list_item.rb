@@ -1,5 +1,4 @@
 class LinkedListItem
-
   include Comparable
   attr_accessor :payload
   attr_reader :next_item
