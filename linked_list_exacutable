@@ -1,0 +1,7 @@
+require_relative "linked_list.rb"
+
+ll = liniked_list.new('foo', 'bar', 'apple', 'orange')
+
+ll.sort!
+
+puts ll.to_s
