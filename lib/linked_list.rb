@@ -1,5 +1,5 @@
 require_relative 'linked_list_item'
-
+require 'pry'
 class LinkedList
   attr_reader :first_item
   attr_reader :size
@@ -138,23 +138,26 @@ class LinkedList
 
     current_item = get_item(0)
     second_item  = get_item(1)
-    if (current_item<=>(second_item)) == 1
+    if current_item > second_item
       @first_item = second_item
       @first_item.next_item = current_item
     end
 
-    while !self.sorted?
-      if @size > 2
-        current_item = get_item(1)
-        second_item  = get_item(2)
+    i = 0
+    node = first_item.next_item
+    unless self.sorted?
+      if node > node.next_item
 
-        if (current_item<=>(next_item)) == 1
+        get_item(0).next_item = node.next_item
+        binding.pry
 
-          @first_item.next_item  = second_item
-          current_item.next_item = second_item.next_item
-          second_item.next_item  = current_item
-        end
+        node.next_item.next_item = node
+        node.next_item = node.next_item.next_item
+
+      else
+        node = node.next_item
       end
+      i += 1
     end
 
   end
