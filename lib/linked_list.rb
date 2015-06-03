@@ -151,7 +151,18 @@ class LinkedList
       end
       i += 1
     end
+  end
 
+
+  def swap_with_next(index)
+    leading_node  = get_item(index - 1)
+    to_swap       = get_item(index)
+    swapie        = get_item(index + 1)
+    trailing_node = get_item(index + 2)
+
+    to_swap.next_item      = trailing_node
+    swapie.next_item     = to_swap
+    leading_node.next_item = swapie
   end
 
 end
