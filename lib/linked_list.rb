@@ -34,15 +34,13 @@ class LinkedList
     end
 
     if index.zero?
-      @first_item
+      first_item
     else
-      i = 0
-      current_node = @first_item
-      until i == index
-        current_node = current_node.next_item
-        i += 1
+      node = @first_item
+      (index).times do
+        node = node.next_item
       end
-      current_node
+      node
     end
   end
 
@@ -149,7 +147,6 @@ class LinkedList
       if node > node.next_item
 
         get_item(0).next_item = node.next_item
-        binding.pry
 
         node.next_item.next_item = node
         node.next_item = node.next_item.next_item

@@ -242,7 +242,6 @@ class LinkedListTest < MiniTest::Unit::TestCase
     assert_equal(nil, ll.index("terrible"))
   end
 
-#### whats up with this test??
   def test_14e_index_of_last_item
     ll = LinkedList.new()
     assert_equal(nil, ll.index("terrible"))
@@ -299,6 +298,16 @@ class LinkedListTest < MiniTest::Unit::TestCase
   def test_15h_unsorted_list_where_begining_is_ordered
     ll = LinkedList.new( 1, 2, 3, 4, "bar", "foo", :b, 8)
     assert !ll.sorted?
+  end
+
+  def test_15i_unsorted_list_where_begining_is_ordered
+    ll = LinkedList.new( 1, 2, 3, 4, 8, 9, 11, 10)
+    assert !ll.sorted?
+  end
+
+  def test_15j_unsorted_list_where_begining_is_ordered
+    ll = LinkedList.new( 1, 2, 3, 4, 5, 6, 7, 8)
+    assert  ll.sorted?
   end
 
   #=== Useful , if you're going to implement bubble sort: ===#

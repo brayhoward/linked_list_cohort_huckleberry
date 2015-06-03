@@ -28,3 +28,6 @@ DEPENDENCIES
   minitest (= 4.7.3)
   minitest-reporters
   pry
+
+BUNDLED WITH
+   1.10.2

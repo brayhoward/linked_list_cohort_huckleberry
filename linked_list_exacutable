@@ -1,6 +1,7 @@
-require_relative "linked_list.rb"
+#!/usr/bin/env ruby
+require_relative "lib/linked_list"
 
-ll = liniked_list.new('foo', 'bar', 'apple', 'orange')
+ll = LinkedList.new('foo', 'bar', 'apple', 'orange')
 
 ll.sort!
 
