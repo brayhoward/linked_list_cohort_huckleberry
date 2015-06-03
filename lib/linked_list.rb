@@ -28,7 +28,6 @@ class LinkedList
 
 
   def get_item(index)
-
     unless (0..@size).include?(index)
       raise IndexError, ("Index #{index} is inavalid.")
     end
@@ -43,6 +42,7 @@ class LinkedList
       node
     end
   end
+
 
   def get(index)
     get_item(index).payload
@@ -60,12 +60,12 @@ class LinkedList
     if size.zero?
       "| |"
     else
-      current_item = @first_item
-      string = current_item.payload
+      item = first_item
+      string = item.payload
 
       (@size -1).times do
-        current_item = current_item.next_item
-        string << ", #{current_item.payload}"
+        item = item.next_item
+        string << ", #{item.payload}"
       end
       "| #{string} |"
     end
@@ -73,14 +73,13 @@ class LinkedList
 
   alias [] get
 
-  def []=(index, payload)
-    list_item = get_item(index)
-    list_item.payload = payload
+  def []=(index, new_payload)
+    get_item(index).payload = new_payload
   end
 
 
   def delete(index)
-    unless (0..@size).include?(index)
+    unless (0..size).include?(index)
       raise IndexError.new ("index #{index} dosnt exist")
     end
 
@@ -89,29 +88,25 @@ class LinkedList
     else
       # get nodes before and after index and link them together
       # which effectively deletes the item at the given index
-      get_item(index -1).next_item=(get_item(index +1))
+      get_item(index - 1).next_item=(get_item(index + 1))
     end
-
     @size -= 1
   end
 
 
   def index(input)
-    current_item = @first_item
-    index = 0
-
-    unless @size == 0
-      payload = @first_item.payload
-      until payload == input or index == @size -1 do
-        current_item = current_item.next_item
-        payload = current_item.payload
+    if size == 0
+      return nil
+    else
+      item = first_item
+      index = 0
+      until item.payload == input || index == (size - 1)
+        item = item.next_item
         index += 1
       end
     end
 
-    unless input === payload
-      nil
-    else
+    if item.payload == input
       index
     end
   end
