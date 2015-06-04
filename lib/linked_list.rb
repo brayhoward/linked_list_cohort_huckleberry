@@ -81,7 +81,7 @@ class LinkedList
 
   def delete(index)
     unless (0..size).include?(index)
-      raise IndexError.new ("index #{index} dosnt exist")
+      raise IndexError.new ("index #{index} doesn't exist")
     end
 
     if index.zero?
@@ -156,14 +156,25 @@ class LinkedList
 
 
   def swap_with_next(index)
-    a  = get_item(index - 1)
-    b  = a.next_item
-    c  = b.next_item
-    d  = c.next_item
+    raise IndexError unless index < (size - 1)
+    if index == 0
+      a = first_item
+      b = a.next_item
+      c = b.next_item
 
-    b.next_item = d
-    c.next_item = b
-    a.next_item = c
+      @first_item = b
+      b.next_item = a
+      a.next_item = c
+    else
+      a  = get_item(index - 1)
+      b  = a.next_item
+      c  = b.next_item
+      d  = c.next_item
+
+      b.next_item = d
+      c.next_item = b
+      a.next_item = c
+    end
   end
 
 end

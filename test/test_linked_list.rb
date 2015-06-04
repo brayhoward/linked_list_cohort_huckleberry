@@ -345,48 +345,48 @@ class LinkedListTest < MiniTest::Unit::TestCase
     end
   end
 
-  ## SORTING!!!
+  # SORTING!!!
 
-  # def test_16a_sort_empty_list
-  #   ll = LinkedList.new()
-  #   ll.sort!
-  #   assert_equal( "| |", ll.to_s)
-  # end
+  def test_16a_sort_empty_list
+    ll = LinkedList.new()
+    ll.sort!
+    assert_equal( "| |", ll.to_s)
+  end
 
-  # def test_16b_sort_single_item_list
-  #   ll = LinkedList.new("foo")
-  #   ll.sort!
-  #   assert_equal( "| foo |", ll.to_s)
-  # end
+  def test_16b_sort_single_item_list
+    ll = LinkedList.new("foo")
+    ll.sort!
+    assert_equal( "| foo |", ll.to_s)
+  end
 
-  # def test_16c_sort_duplicates
-  #   ll = LinkedList.new("foo", "foo")
-  #   ll.sort!
-  #   assert_equal( "| foo, foo |", ll.to_s)
-  # end
+  def test_16c_sort_duplicates
+    ll = LinkedList.new("foo", "foo")
+    ll.sort!
+    assert_equal( "| foo, foo |", ll.to_s)
+  end
 
-  # def test_16d_sort_unsorted_list
-  #   ll = LinkedList.new("foo", "bar")
-  #   ll.sort!
-  #   assert_equal( "| bar, foo |", ll.to_s)
-  # end
+  def test_16d_sort_unsorted_list
+    ll = LinkedList.new("foo", "bar")
+    ll.sort!
+    assert_equal( "| bar, foo |", ll.to_s)
+  end
 
-  # def test_16e_sort_sorted_list
-  #   ll = LinkedList.new("bar", "foo")
-  #   ll.sort!
-  #   assert_equal( "| bar, foo |", ll.to_s)
-  # end
+  def test_16e_sort_sorted_list
+    ll = LinkedList.new("bar", "foo")
+    ll.sort!
+    assert_equal( "| bar, foo |", ll.to_s)
+  end
 
-  # def test_16f_sort_longer_list
-  #   ll = LinkedList.new("bar", "adda", "grille", "abba", "foo")
-  #   ll.sort!
-  #   assert_equal( "| abba, adda, bar, foo, grille |", ll.to_s)
-  # end
+  def test_16f_sort_longer_list
+    ll = LinkedList.new("bar", "adda", "grille", "abba", "foo")
+    ll.sort!
+    assert_equal( "| abba, adda, bar, foo, grille |", ll.to_s)
+  end
 
-  # def test_16g_sort_list_with_multiple_types
-  #   ll = LinkedList.new(:b, "foo", 1, "bar", 2)
-  #   ll.sort!
-  #   assert_equal( "| 1, 2, bar, foo, b |", ll.to_s)
-  # end
+  def test_16g_sort_list_with_multiple_types
+    ll = LinkedList.new(:b, "foo", 1, "bar", 2)
+    ll.sort!
+    assert_equal( "| 1, 2, bar, foo, b |", ll.to_s)
+  end
 
 end
