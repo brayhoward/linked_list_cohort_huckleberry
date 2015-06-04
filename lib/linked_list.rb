@@ -1,5 +1,6 @@
 require_relative 'linked_list_item'
 require 'pry'
+
 class LinkedList
   attr_reader :first_item
   attr_reader :size
@@ -65,7 +66,7 @@ class LinkedList
 
       (@size -1).times do
         item = item.next_item
-        string << ", #{item.payload}"
+        string += ", #{item.payload}"
       end
       "| #{string} |"
     end
@@ -155,14 +156,14 @@ class LinkedList
 
 
   def swap_with_next(index)
-    leading_node  = get_item(index - 1)
-    to_swap       = get_item(index)
-    swapie        = get_item(index + 1)
-    trailing_node = get_item(index + 2)
+    a  = get_item(index - 1)
+    b  = a.next_item
+    c  = b.next_item
+    d  = c.next_item
 
-    to_swap.next_item      = trailing_node
-    swapie.next_item     = to_swap
-    leading_node.next_item = swapie
+    b.next_item = d
+    c.next_item = b
+    a.next_item = c
   end
 
 end

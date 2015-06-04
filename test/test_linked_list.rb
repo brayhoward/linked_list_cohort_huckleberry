@@ -315,7 +315,6 @@ class LinkedListTest < MiniTest::Unit::TestCase
 
   def test_17a_swap_middle_items
     ll = LinkedList.new("a","b","c","d")
-    assert_equal "| a, b, c, d |", ll.to_s
     ll.swap_with_next(1)
     assert_equal "| a, c, b, d |", ll.to_s
   end
