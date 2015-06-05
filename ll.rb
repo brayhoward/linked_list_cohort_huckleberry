@@ -16,7 +16,7 @@ payloads.each { |x| ll.push(x) }
 print "* -> "
 
 ll.size.times do |i|
-	print "#{ll.get(i).inspect} ->"
+	print "#{ll.get(i).inspect} -> "
 end
 
 print "nil"

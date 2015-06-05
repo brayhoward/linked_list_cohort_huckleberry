@@ -62,7 +62,7 @@ class LinkedList
       "| |"
     else
       item = first_item
-      string = item.payload
+      string = item.payload.to_s
 
       (@size -1).times do
         item = item.next_item
@@ -130,27 +130,16 @@ class LinkedList
       return true
     end
 
-    current_item = get_item(0)
-    second_item  = get_item(1)
-    if current_item > second_item
-      @first_item = second_item
-      @first_item.next_item = current_item
-    end
-
     i = 0
-    node = first_item.next_item
-    unless self.sorted?
-      if node > node.next_item
-
-        get_item(0).next_item = node.next_item
-
-        node.next_item.next_item = node
-        node.next_item = node.next_item.next_item
-
+    until sorted?
+      item = get_item(i)
+      swap_with_next(i) unless item < item.next_item
+      item = item.next_item
+      if i < size - 2
+        i += 1
       else
-        node = node.next_item
+        i = 0
       end
-      i += 1
     end
   end
 
