@@ -30,4 +30,10 @@ class LinkedListTest < MiniTest::Unit::TestCase
     expected = '* -> "foo" -> "bar" -> "cat" -> "zoo" -> "giraffe" -> "golf" -> nil'
     assert_equal expected, output
   end
+
+  def test_sort!
+    output = `ruby ll.rb sort! foo bar grille x s e g f v`
+    expected = `* -> "bar" -> "e" -> "f" -> "foo" -> "g" -> "grille" -> "s" -> "x" -> "v"`
+    assert_equal expected, output
+  end
 end

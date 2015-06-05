@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-require_relative "lib/linked_list"
-
-ll = LinkedList.new('foo', 'bar', 'apple', 'orange')
-
-ll.sort!
-
-puts ll.to_s
