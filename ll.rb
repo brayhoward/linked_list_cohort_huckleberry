@@ -10,14 +10,15 @@ ll = LinkedList.new
 # Push method
 def push_arguments(payloads, ll)
   payloads.each { |x| ll.push(x) unless x == "sort!"}
+  ll
 end
 
 # And, populate it
 if ARGV[0] == "sort!"
-  push_arguments(payloads, ll)
+  ll = push_arguments(payloads, ll)
   ll.sort!
 else
-  push_arguments(payloads, ll)
+  ll = push_arguments(payloads, ll)
 end
 
 # Then, print it out
