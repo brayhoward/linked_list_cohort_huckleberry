@@ -17,10 +17,10 @@ class LinkedList
     if first_item.nil?
 
       @first_item = new_item
-      @last_item = first_item
+      @last_item  = new_item
     else
       @last_item.next_item = new_item
-      @last_item = @last_item.next_item
+      @last_item           = new_item
     end
     @size += 1
 
