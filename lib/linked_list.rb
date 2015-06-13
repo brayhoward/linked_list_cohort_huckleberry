@@ -96,22 +96,28 @@ class LinkedList
   end
 
 
-  def index(input)
+  def index(payload)
     if size == 0
       return nil
     else
-      item = first_item
-      index = 0
-      until item.payload == input || index == (size - 1)
-        item = item.next_item
-        index += 1
-      end
+     find_item(payload)
+    end
+  end
+
+
+  def find_item(payload)
+    item = first_item; index = 0
+
+    until item.payload == payload || index == (size - 1)
+      item = item.next_item
+      index += 1
     end
 
-    if item.payload == input
+    if item.payload == payload
       index
     end
   end
+
 
   def sorted?
     node = first_item
