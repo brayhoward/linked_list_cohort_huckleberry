@@ -1,5 +1,4 @@
 require_relative 'linked_list_item'
-require 'pry'
 
 class LinkedList
   attr_reader :first_item
