@@ -14,7 +14,7 @@ class LinkedList
   def push(item)
     new_item = LinkedListItem.new(item)
 
-    if @first_item.nil?
+    if first_item.nil?
 
       @first_item = new_item
       @last_item = first_item
@@ -35,11 +35,11 @@ class LinkedList
     if index.zero?
       first_item
     else
-      node = @first_item
+      item = @first_item
       (index).times do
-        node = node.next_item
+        item = item.next_item
       end
-      node
+      item
     end
   end
 
