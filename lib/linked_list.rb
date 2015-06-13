@@ -138,9 +138,7 @@ class LinkedList
 
 
   def sort!
-    if @first_item.nil? or @first_item.next_item.nil?
-      return true
-    end
+    return true if first_item.nil? or first_item.next_item.nil?
 
     i = 0
     until sorted?
@@ -158,6 +156,7 @@ class LinkedList
 
   def swap_with_next(index)
     raise IndexError unless index < (size - 1)
+
     if index == 0
       a = first_item
       b = a.next_item
