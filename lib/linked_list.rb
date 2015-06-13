@@ -113,17 +113,21 @@ class LinkedList
       index += 1
     end
 
-    if item.payload == payload
-      index
-    end
+    index if item.payload == payload
   end
 
 
   def sorted?
     node = first_item
     if node.nil? || node.next_item.nil?
-      return true
+      true
+    else
+      check_sort(node)
     end
+  end
+
+
+  def check_sort(node)
     (size - 1).times do
       if node > node.next_item
         return false
@@ -131,6 +135,7 @@ class LinkedList
       node = node.next_item
     end
   end
+
 
   def sort!
     if @first_item.nil? or @first_item.next_item.nil?
