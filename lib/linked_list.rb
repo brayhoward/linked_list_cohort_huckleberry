@@ -35,7 +35,7 @@ class LinkedList
     if index.zero?
       first_item
     else
-      item = @first_item
+      item = first_item
       (index).times do
         item = item.next_item
       end
@@ -47,6 +47,8 @@ class LinkedList
   def get(index)
     get_item(index).payload
   end
+
+  alias [] get
 
 
   def last
@@ -60,10 +62,10 @@ class LinkedList
     if size.zero?
       "| |"
     else
-      item = first_item
+      item   = first_item
       string = item.payload.to_s
 
-      (@size -1).times do
+      (@size - 1).times do
         item = item.next_item
         string += ", #{item.payload}"
       end
@@ -71,9 +73,9 @@ class LinkedList
     end
   end
 
-  alias [] get
 
   def []=(index, new_payload)
+    #reset item at "index" with "new_payload"
     get_item(index).payload = new_payload
   end
 
@@ -86,8 +88,8 @@ class LinkedList
     if index.zero?
       @first_item = first_item.next_item
     else
-      # get nodes before and after index and link them together
-      # which effectively deletes the item at the given index
+      # gets items before and after "index" and links them together
+      # which effectively deletes the item at the given "index"
       get_item(index - 1).next_item=(get_item(index + 1))
     end
     @size -= 1
