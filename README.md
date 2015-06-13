@@ -1,44 +1,12 @@
-NSS-Linked-List
+Linked-List
 ===============
 
-Instructions
+linked list data structure implementation with Ruby
+[Imgur](http://i.imgur.com/EpeWzhv.png?1)
 -----------
+Read more about linked list data structures here
+  https://en.wikipedia.org/wiki/Linked_list
 
-  1. Read about unit testing at the following links:
-    * http://en.wikipedia.org/wiki/Test-driven_development
-    * http://www.extremeprogramming.org/rules/unittests.html
-  2. Fork this repository and clone your fork
-  3. cd into the linked-list-cohort-huckleberry folder on your computer
-  3. Run `bundle install` to install MiniTest.
-  4. Run `rake` to run the test suite
-  5. Make the test suite pass by implementing the LinkedList and LinkedListItem classes
-    * Choose one test at a time to work on
-    * Once the tests pass, you should refactor and clean up your code
-  6. Push your implementation up to github as you work on it.
-
-### Caveats
-
-* Don't use hashes
-* Don't use arrays (except in the bonus exercise on initialize)
-* Only use core Ruby (i.e. No using require)
-*  No copying (from the internet or your peers)
-
-Test Run Modes
---------------
-
-To run the tests Koans style:
-
-  rake
-
-To run all of the tests at once:
-
-  rake test_all
-
-More Information
-----------------
-
-The tests for the project are in the /tests directory.
-
-The stubbed classes that you are to implement are in the /lib directory.
-
-I have numbered the unit tests to give you a hint at the easiest implementation order.
+### Specs
+* Doesn't leverage Ruby hashes, or arrays
+* It only uses core Ruby
