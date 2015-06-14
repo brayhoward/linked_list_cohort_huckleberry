@@ -65,7 +65,7 @@ class LinkedList
       item   = first_item
       string = item.payload.to_s
 
-      (@size - 1).times do
+      (size - 1).times do
         item = item.next_item
         string += ", #{item.payload}"
       end
