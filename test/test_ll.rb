@@ -1,4 +1,4 @@
-require 'nss'
+require_relative 'nss'
 
 class LinkedListTest < MiniTest::Unit::TestCase
   def test_with_no_arguments

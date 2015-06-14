@@ -29,4 +29,4 @@ ll.size.times do |i|
 	print "#{ll.get(i).inspect} -> "
 end
 
-print "nil\n"
+print "nil"

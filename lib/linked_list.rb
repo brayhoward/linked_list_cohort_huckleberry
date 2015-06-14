@@ -1,9 +1,8 @@
 require_relative 'linked_list_item'
 
 class LinkedList
-  attr_reader :first_item
-  attr_reader :size
-
+  attr_reader :first_item,
+              :size
 
   def initialize(*new_li)
     @size = 0
@@ -143,17 +142,14 @@ class LinkedList
 
 
   def sort!
-    return true if first_item.nil? or first_item.next_item.nil?
-
     i = 0
     until sorted?
       item = get_item(i)
-      swap_with_next(i) unless item < item.next_item
-      item = item.next_item
-      if i < size - 2
-        i += 1
-      else
+      swap_with_next(i) unless already_sorted?(item)
+      if second_to_last_item?(i)
         i = 0
+      else
+        i += 1
       end
     end
   end
@@ -182,9 +178,12 @@ class LinkedList
     end
   end
 
+  private
+  def second_to_last_item?(iterator)
+    iterator == size - 2
+  end
+
+  def already_sorted?(item)
+    item < item.next_item
+  end
 end
-
-
-
-
-
