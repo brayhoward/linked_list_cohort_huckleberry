@@ -1,34 +1,35 @@
 require_relative 'linked_list_item'
 
 class LinkedList
-  attr_reader :first_item,
-              :size
+  attr_accessor :first_item,
+                :size
 
-  def initialize(*new_li)
+  attr_reader   :last_item
+
+  def initialize *new_li
     @size = 0
-    new_li.each {|payload| push(payload)}
+    new_li.each { |payload| push payload }
   end
 
 
-  def push(item)
-    new_item = LinkedListItem.new(item)
+  def push item
+    new_item = LinkedListItem.new item
 
-    if first_item.nil?
-
-      @first_item = new_item
-      @last_item  = new_item
-    else
+    if first_item
       @last_item.next_item = new_item
       @last_item           = new_item
+    else
+      @first_item = new_item
+      @last_item  = new_item
     end
     @size += 1
 
   end
 
 
-  def get_item(index)
-    unless (0..@size).include?(index)
-      raise IndexError, ("Index #{index} is inavalid.")
+  def get_item index
+    unless (0..size).include? index
+      raise IndexError, "Index #{index} is inavalid."
     end
 
     if index.zero?
@@ -43,7 +44,7 @@ class LinkedList
   end
 
 
-  def get(index)
+  def get index
     get_item(index).payload
   end
 
@@ -51,8 +52,8 @@ class LinkedList
 
 
   def last
-    unless @last_item.nil?
-      @last_item.payload
+    if @last_item
+      last_item.payload
     end
   end
 
@@ -78,15 +79,15 @@ class LinkedList
   end
 
 
-  def []=(index, new_payload)
+  def []= index, new_payload
     #reset item at "index" with "new_payload"
     get_item(index).payload = new_payload
   end
 
 
-  def delete(index)
-    unless (0..size).include?(index)
-      raise IndexError.new ("index #{index} doesn't exist")
+  def delete index
+    unless (0..size).include? index
+      raise IndexError.new "index #{index} doesn't exist"
     end
 
     if index.zero?
@@ -100,16 +101,16 @@ class LinkedList
   end
 
 
-  def index(payload)
+  def index payload
     if size == 0
       return nil
     else
-     find_item(payload)
+     find_item payload
     end
   end
 
 
-  def find_item(payload)
+  def find_item payload
     item = first_item; index = 0
 
     until item.payload == payload || index == (size - 1)
@@ -122,21 +123,21 @@ class LinkedList
 
 
   def sorted?
-    node = first_item
-    if node.nil? || node.next_item.nil?
+    item = first_item
+    if item.nil? || item.next_item.nil?
       true
     else
-      check_sort(node)
+      check_sort item
     end
   end
 
 
-  def check_sort(node)
+  def check_sort item
     (size - 1).times do
-      if node > node.next_item
+      if item > item.next_item
         return false
       end
-      node = node.next_item
+      item = item.next_item
     end
   end
 
@@ -144,9 +145,9 @@ class LinkedList
   def sort!
     i = 0
     until sorted?
-      item = get_item(i)
-      swap_with_next(i) unless already_sorted?(item)
-      if second_to_last_item?(i)
+      item = get_item i
+      swap_with_next i unless already_sorted? item
+      if second_to_last_item? i
         i = 0
       else
         i += 1
@@ -155,8 +156,8 @@ class LinkedList
   end
 
 
-  def swap_with_next(index)
-    raise IndexError unless index < (size - 1)
+  def swap_with_next index
+    raise IndexError unless index < size - 1
 
     if index == 0
       a = first_item
@@ -167,7 +168,7 @@ class LinkedList
       b.next_item = a
       a.next_item = c
     else
-      a  = get_item(index - 1)
+      a  = get_item index - 1
       b  = a.next_item
       c  = b.next_item
       d  = c.next_item
@@ -179,11 +180,11 @@ class LinkedList
   end
 
   private
-  def second_to_last_item?(iterator)
+  def second_to_last_item? iterator
     iterator == size - 2
   end
 
-  def already_sorted?(item)
+  def already_sorted? item
     item < item.next_item
   end
 end
