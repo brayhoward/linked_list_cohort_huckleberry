@@ -62,15 +62,20 @@ class LinkedList
     if size.zero?
       "| |"
     else
-      item   = first_item
-      string = item.payload.to_s
-
-      (size - 1).times do
-        item = item.next_item
-        string += ", #{item.payload}"
-      end
-      "| #{string} |"
+      linked_list = string_builder
+      "| #{linked_list} |"
     end
+  end
+
+  def string_builder
+    item        = first_item
+    linked_list = item.payload.to_s
+
+    (size - 1).times do
+      item = item.next_item
+      linked_list += ", #{item.payload}"
+    end
+    linked_list
   end
 
 
