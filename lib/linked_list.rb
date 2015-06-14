@@ -27,23 +27,6 @@ class LinkedList
   end
 
 
-  def get_item index
-    unless (0..size).include? index
-      raise IndexError, "Index #{index} is inavalid."
-    end
-
-    if index.zero?
-      first_item
-    else
-      item = first_item
-      (index).times do
-        item = item.next_item
-      end
-      item
-    end
-  end
-
-
   def get index
     get_item(index).payload
   end
@@ -65,17 +48,6 @@ class LinkedList
       linked_list = string_builder
       "| #{linked_list} |"
     end
-  end
-
-  def string_builder
-    item        = first_item
-    linked_list = item.payload.to_s
-
-    (size - 1).times do
-      item = item.next_item
-      linked_list += ", #{item.payload}"
-    end
-    linked_list
   end
 
 
@@ -110,34 +82,12 @@ class LinkedList
   end
 
 
-  def find_item payload
-    item = first_item; index = 0
-
-    until item.payload == payload || index == (size - 1)
-      item = item.next_item
-      index += 1
-    end
-
-    index if item.payload == payload
-  end
-
-
   def sorted?
     item = first_item
-    if item.nil? || item.next_item.nil?
-      true
+    if item && item.next_item
+      check_sort? item
     else
-      check_sort item
-    end
-  end
-
-
-  def check_sort item
-    (size - 1).times do
-      if item > item.next_item
-        return false
-      end
-      item = item.next_item
+      true
     end
   end
 
@@ -146,7 +96,7 @@ class LinkedList
     i = 0
     until sorted?
       item = get_item i
-      swap_with_next i unless already_sorted? item
+      swap_with_next i unless pair_sorted? item
       if second_to_last_item? i
         i = 0
       else
@@ -157,7 +107,7 @@ class LinkedList
 
 
   def swap_with_next index
-    raise IndexError unless index < size - 1
+    raise IndexError unless index < last_item_index
 
     if index == 0
       a = first_item
@@ -179,12 +129,71 @@ class LinkedList
     end
   end
 
+
   private
+
+  def last_item_index
+    size - 1
+  end
+
+
   def second_to_last_item? iterator
     iterator == size - 2
   end
 
-  def already_sorted? item
+
+  def pair_sorted? item
     item < item.next_item
+  end
+
+
+  def check_sort? item
+    (last_item_index).times do
+      if item > item.next_item
+        return false
+      end
+      item = item.next_item
+    end
+  end
+
+
+  def get_item index
+    unless (0..size).include? index
+      raise IndexError, "Index #{index} is inavalid."
+    end
+
+    if index.zero?
+      first_item
+    else
+      item = first_item
+      (index).times do
+        item = item.next_item
+      end
+      item
+    end
+  end
+
+
+  def find_item payload
+    item = first_item; index = 0
+
+    until item.payload == payload || index == last_item_index
+      item = item.next_item
+      index += 1
+    end
+
+    index if item.payload == payload
+  end
+
+
+  def string_builder
+    item        = first_item
+    linked_list = item.payload.to_s
+
+    last_item_index.times do
+      item = item.next_item
+      linked_list += ", #{item.payload}"
+    end
+    linked_list
   end
 end
