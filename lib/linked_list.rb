@@ -6,13 +6,13 @@ class LinkedList
 
   attr_reader   :last_item
 
-  def initialize *new_li
+  def initialize(*new_li)
     @size = 0
     new_li.each { |payload| push payload }
   end
 
 
-  def push item
+  def push(item)
     new_item = LinkedListItem.new item
 
     if first_item
@@ -23,22 +23,19 @@ class LinkedList
       @last_item  = new_item
     end
     @size += 1
-
   end
 
 
-  def get index
+  def get(index)
     get_item(index).payload
   end
 
 
-  alias [] get
+  alias_method :[], :get
 
 
   def last
-    if @last_item
-      last_item.payload
-    end
+    last_item.payload if @last_item
   end
 
 
@@ -52,16 +49,14 @@ class LinkedList
   end
 
 
-  def []= index, new_payload
+  def []=(index, new_payload)
     #reset item at "index" with "new_payload"
     get_item(index).payload = new_payload
   end
 
 
-  def delete index
-    unless (0..size).include? index
-      raise IndexError.new "index #{index} doesn't exist"
-    end
+  def delete(index)
+    raise IndexError, "index #{index} doesn't exist" unless (0..size).include? index
 
     if index.zero?
       @first_item = first_item.next_item
@@ -74,7 +69,7 @@ class LinkedList
   end
 
 
-  def index payload
+  def index(payload)
     if size == 0
       return nil
     else
@@ -107,7 +102,7 @@ class LinkedList
   end
 
 
-  def swap_with_next index
+  def swap_with_next(index)
     raise IndexError unless index < last_item_index
 
     if index == 0
@@ -138,17 +133,17 @@ class LinkedList
   end
 
 
-  def second_to_last_item? iterator
+  def second_to_last_item?(iterator)
     iterator == size - 2
   end
 
 
-  def pair_sorted? item
+  def pair_sorted?(item)
     item < item.next_item
   end
 
 
-  def check_sort? item
+  def check_sort?(item)
     (last_item_index).times do
       if item > item.next_item
         return false
@@ -158,10 +153,8 @@ class LinkedList
   end
 
 
-  def get_item index
-    unless (0..size).include? index
-      raise IndexError, "Index #{index} is inavalid."
-    end
+  def get_item(index)
+    raise IndexError, "Index #{index} is inavalid." unless (0..size).include? index
 
     if index.zero?
       first_item
@@ -175,7 +168,7 @@ class LinkedList
   end
 
 
-  def find_item payload
+  def find_item(payload)
     item = first_item; index = 0
 
     until item.payload == payload || index == last_item_index
