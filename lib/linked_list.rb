@@ -56,7 +56,7 @@ class LinkedList
 
 
   def delete(index)
-    raise IndexError, "index #{index} doesn't exist" unless (0..size).include? index
+    raise IndexError, "index #{index} doesn't exist" unless (0..size).include?(index)
 
     if index.zero?
       @first_item = first_item.next_item
@@ -91,9 +91,9 @@ class LinkedList
   def sort!
     i = 0
     until sorted?
-      item = get_item i
+      item = get_item(i)
       swap_with_next i unless pair_sorted? item
-      if second_to_last_item? i
+      if second_to_last_item?(i)
         i = 0
       else
         i += 1
@@ -154,7 +154,7 @@ class LinkedList
 
 
   def get_item(index)
-    raise IndexError, "Index #{index} is inavalid." unless (0..size).include? index
+    raise IndexError, "Index #{index} is inavalid." unless (0..size).include?(index)
 
     if index.zero?
       first_item
