@@ -92,7 +92,7 @@ class LinkedList
     i = 0
     until sorted?
       item = get_item(i)
-      swap_with_next i unless pair_sorted? item
+      swap_with_next(i) unless pair_sorted? item
       if second_to_last_item?(i)
         i = 0
       else
