@@ -8,7 +8,7 @@ class LinkedList
 
   def initialize(*new_li)
     @size = 0
-    new_li.each { |payload| push payload }
+    new_li.each { |payload| push(payload) }
   end
 
 
@@ -43,8 +43,7 @@ class LinkedList
     if size.zero?
       "| |"
     else
-      linked_list = string_builder
-      "| #{linked_list} |"
+      "| #{build_string} |"
     end
   end
 
@@ -70,21 +69,14 @@ class LinkedList
 
 
   def index(payload)
-    if size == 0
-      return nil
-    else
-     find_item payload
-    end
+    return nil if size == 0
+    find_item(payload)
   end
 
 
   def sorted?
-    item = first_item
-    if item && item.next_item
-      check_sort? item
-    else
-      true
-    end
+    return true if size < 2
+    check_sort?(first_item)
   end
 
 
@@ -92,12 +84,8 @@ class LinkedList
     i = 0
     until sorted?
       item = get_item(i)
-      swap_with_next(i) unless pair_sorted? item
-      if second_to_last_item?(i)
-        i = 0
-      else
-        i += 1
-      end
+      swap_with_next(i) unless pair_sorted?(item)
+      second_to_last_item?(i) ? i = 0 : i += 1
     end
   end
 
@@ -133,8 +121,8 @@ class LinkedList
   end
 
 
-  def second_to_last_item?(iterator)
-    iterator == size - 2
+  def second_to_last_item?(item)
+    item == size - 2
   end
 
 
@@ -180,7 +168,7 @@ class LinkedList
   end
 
 
-  def string_builder
+  def build_string
     item        = first_item
     linked_list = item.payload.to_s
 
