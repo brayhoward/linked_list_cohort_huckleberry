@@ -17,19 +17,22 @@ class LinkedListItem
     next_item.nil?
   end
 
-  def <=>(other)
-    if self.payload.class == other.payload.class
-      self.payload <=> other.payload
+  def <=>(other_node)
+    return is_same(other_node) if is_same(other_node)
+
+    if self.payload.is_a? Symbol
+      1
+    elsif self.payload.is_a? Fixnum
+      -1
     else
-      if self.payload.is_a? Symbol
-        1
-      elsif self.payload.is_a? Fixnum
-        -1
-      else
-        -1 * (other <=> self)
-      end
+      -1 * (other_node <=> self)
     end
   end
+
+  def is_same(other_node)
+    self.payload <=> other_node.payload if self.payload.class == other_node.payload.class
+  end
+
 
   def ===(lli)
      self.equal? lli
