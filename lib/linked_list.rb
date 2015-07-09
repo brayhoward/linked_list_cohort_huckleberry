@@ -1,10 +1,10 @@
 require_relative 'linked_list_item'
+require 'pry'
 
 class LinkedList
   attr_accessor :first_item,
+                :last_item,
                 :size
-
-  attr_reader   :last_item
 
   def initialize(*new_li)
     @size = 0
@@ -22,7 +22,7 @@ class LinkedList
       @first_item = new_item
       @last_item  = new_item
     end
-    @size += 1
+    self.size += 1
   end
 
 
@@ -138,6 +138,7 @@ class LinkedList
       end
       item = item.next_item
     end
+    true
   end
 
 

@@ -1,5 +1,5 @@
 require 'nss'
-require 'linked_list'
+require_relative '../lib/linked_list'
 
 class LinkedListTest < MiniTest::Unit::TestCase
 
